@@ -5,13 +5,13 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 import melo.android.mvvm.dagger.ViewModelKey
-import melo.example.MyViewModel
+import melo.example.MainViewModel
 
 @Module
 abstract class MyViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MyViewModel::class)
-    abstract fun bindMyViewModel(myViewModel: MyViewModel): ViewModel
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMyViewModel(mainViewModel: MainViewModel): ViewModel
 }

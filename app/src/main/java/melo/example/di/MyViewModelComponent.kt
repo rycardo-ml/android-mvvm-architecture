@@ -4,6 +4,7 @@ import dagger.Component
 import melo.android.mvvm.dagger.ViewModelComponent
 import melo.android.mvvm.dagger.ViewModelFactoryModule
 import melo.example.MainActivity
+import melo.example.MainFragment
 import javax.inject.Singleton
 
 //https://medium.com/@marco_cattaneo/android-viewmodel-and-factoryprovider-good-way-to-manage-it-with-dagger-2-d9e20a07084c
@@ -13,5 +14,6 @@ import javax.inject.Singleton
 interface MyViewModelComponent: ViewModelComponent {
 
     fun inject(activity: MainActivity)
+    fun inject(fragment: MainFragment)
 
 }
