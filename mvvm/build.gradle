@@ -3,6 +3,38 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven-publish'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.4.1'
+    }
+}
+
+ext {
+    bintrayRepo = 'maven' // your repo name
+    bintrayName = 'android-mvvm' // has to be same as your library module name
+    publishedGroupId = 'melo.android' // your module package name
+    libraryName = 'android-mvvm'
+    artifact = 'mvvm' // has to be same as your library module name
+    libraryDescription = 'A MVVM architecture for Android'
+    siteUrl = 'https://github.com/rycardo-ml/android-mvp-architecture'
+    gitUrl = 'https://github.com/rycardo-ml/android-mvp-architecture.git'
+    libraryVersion ='0.0.1'
+    developerId = 'rycardo-ml'
+    developerName = 'Ricardo de Melo Lima'
+    developerEmail = 'ricardo.ml.lima@gmail.com'
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 28
 
@@ -48,3 +80,10 @@ dependencies {
 repositories {
     mavenCentral()
 }
+
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+
+
+//http://blogs.quovantis.com/how-to-publish-android-library-on-bintrayjcenter/
+//./gradlew clean build install bintrayUpload
