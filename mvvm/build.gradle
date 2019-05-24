@@ -56,6 +56,10 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -72,6 +76,13 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.16'
     kapt 'com.google.dagger:dagger-compiler:2.16'
 
+    // JDK 11 JaxB error fix
+//    implementation "javax.xml.bind:jaxb-api:2.2.11"
+//    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
+//    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
+//    implementation "javax.activation:activation:1.1.1"
+//    compileOnly 'com.github.pengrad:jdk9-deps:1.0'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -81,9 +92,15 @@ repositories {
     mavenCentral()
 }
 
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
-apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
-
+if (project.rootProject.file('local.properties').exists()) {
+    apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/installv.gradle'
+    apply from: 'https://raw.githubusercontent.com/numetriclabz/jcenter/master/bintrayv.gradle'
+}
 
 //http://blogs.quovantis.com/how-to-publish-android-library-on-bintrayjcenter/
+//https://android.jlelse.eu/publishing-your-android-kotlin-or-java-library-to-jcenter-from-android-studio-1b24977fe450
+
+//TODO PARA DEPLOY: Add java8 path on gradle.properties [org.gradle.java.home=/usr/lib/jvm/java-8-oracle]
+//TODO PARA DEPLOY:
+
 //./gradlew clean build install bintrayUpload
