@@ -101,6 +101,6 @@ if (project.rootProject.file('local.properties').exists()) {
 //https://android.jlelse.eu/publishing-your-android-kotlin-or-java-library-to-jcenter-from-android-studio-1b24977fe450
 
 //TODO PARA DEPLOY: Add java8 path on gradle.properties [org.gradle.java.home=/usr/lib/jvm/java-8-oracle]
-//TODO PARA DEPLOY:
+//TODO PARA DEPLOY: add bintray.user bintray.apikey to local.properties
 
 //./gradlew clean build install bintrayUpload
